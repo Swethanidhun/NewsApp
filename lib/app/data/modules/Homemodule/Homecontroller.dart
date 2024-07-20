@@ -38,11 +38,11 @@ class HomeController extends GetxController {
   Future<void> writedata() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString(
-        'title', dataModel.value.articles![1].title.toString());
+        'title', dataModel.value.articles![5].title.toString());
     await prefs.setString(
-        'discription', dataModel.value.articles![1].description.toString());
+        'discription', dataModel.value.articles![5].description.toString());
     await prefs.setString(
-        'image', dataModel.value.articles![1].urlToImage.toString());
+        'image', dataModel.value.articles![5].urlToImage.toString());
     await readdata();
   }
 
@@ -61,7 +61,6 @@ class HomeController extends GetxController {
     super.onInit();
     internetconnectionstreamsubscription =
         InternetConnection().onStatusChange.listen((event) {
-
       switch (event) {
         case InternetStatus.connected:
           isConnectedToInternet.value = true;
@@ -76,8 +75,6 @@ class HomeController extends GetxController {
       }
     });
   }
-
-  
 
   @override
   void dispose() {
